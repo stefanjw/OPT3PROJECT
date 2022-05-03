@@ -9,23 +9,28 @@ public class Gebruiker {
     private String naam;
     private String Achternaam;
     private String email;
+
+
+
     private static ArrayList<Gebruiker> alleGebruikers = new ArrayList<>();
 
     public Gebruiker(String Gebruikersnaam, String wachtwoord ){
-        this.Gebruikersnaam=getGebruikersnaam();
+        this.Gebruikersnaam=Gebruikersnaam;
         this.wachtwoord=wachtwoord;
-     alleGebruikers.add(this);
+  opslaanGebruiker(this);
     }
 
     public String getGebruikersnaam() {
         return Gebruikersnaam;
     }
-
+    public static ArrayList<Gebruiker> getAlleGebruikers() {
+        return alleGebruikers;
+    }
     public String getWachtwoord() {
         return wachtwoord;
     }
 
-    public Gebruiker ZoekGebruiker(String Gebruikersnaam){
+    public static Gebruiker ZoekGebruiker(String Gebruikersnaam){
           for(Gebruiker a : alleGebruikers){
              if(Gebruikersnaam.equals(a.Gebruikersnaam)){
                  return a;
@@ -46,4 +51,5 @@ public class Gebruiker {
     public void verwijderAccount(){
           alleGebruikers.remove(this);
     }
+    public static void opslaanGebruiker(Gebruiker gebruiker){ alleGebruikers.add(gebruiker); }
 }

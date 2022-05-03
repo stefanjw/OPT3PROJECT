@@ -18,9 +18,13 @@ class CreateAccountController {
     private Button SubmitButton;
 
     private iNavigation screen;
-    @FXMLjli;bk
+
 
     public void GoestoLoginMenu(ActionEvent actionEvent) {
-        if(Gebruiker.checkEmailEnGebruikersnaam()) }
+        if(){
 
+        }
+
+
+    }
 }
