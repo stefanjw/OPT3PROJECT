@@ -7,15 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class LoginTest {
 
 
-
-
     @Test
     void logIn() {
-        Gebruiker a = new Gebruiker("jaap", "d");
+        Gebruiker a = new Gebruiker("r", "g");
+
       Login log = new Login();
-      assertEquals("jaap", log.getIngelogdeGebruiker().getGebruikersnaam());
 
-
+      assertEquals("r", log.getIngelogdeGebruiker().getGebruikersnaam());
 
     }
 }

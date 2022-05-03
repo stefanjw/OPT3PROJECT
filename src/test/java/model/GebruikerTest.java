@@ -8,19 +8,14 @@ public class GebruikerTest {
 
     @Test
     void zoekGebruiker() {
-
-
+        Gebruiker.opslaanGebruiker(new Gebruiker("jaap", "86"));
+        assertNotNull(Gebruiker.ZoekGebruiker("jaap"));
     }
 
     @Test
     void checkGebruikersnaam() {
         Gebruiker a = new Gebruiker("jaap", "lol");
         assertEquals("jaap", a.getGebruikersnaam());
-
-
-
-
-
     }
 
     @Test
