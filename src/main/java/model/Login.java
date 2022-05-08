@@ -28,6 +28,10 @@ bevoegdeGebruikers = Gebruiker.getAlleGebruikers();
 
 
     }
+    public void logUit(){
+        this.ingelogdeGebruiker = null;
+
+    }
 
     public Gebruiker getIngelogdeGebruiker() {
         return ingelogdeGebruiker;

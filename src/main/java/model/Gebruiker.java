@@ -48,8 +48,12 @@ public class Gebruiker {
         return true;
     }
 
+
+
+
     public void verwijderAccount(){
           alleGebruikers.remove(this);
     }
+
     public static void opslaanGebruiker(Gebruiker gebruiker){ alleGebruikers.add(gebruiker); }
 }
