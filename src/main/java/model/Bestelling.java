@@ -12,7 +12,6 @@ public Bestelling(){
 }
 
 public void getProduct(Product product){
-
     winkelmand.add(product);
     }
 

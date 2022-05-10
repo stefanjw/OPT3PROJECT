@@ -17,7 +17,7 @@ public class Gebruiker {
     public Gebruiker(String Gebruikersnaam, String wachtwoord ){
         this.Gebruikersnaam=Gebruikersnaam;
         this.wachtwoord=wachtwoord;
-  opslaanGebruiker(this);
+        opslaanGebruiker(this);
     }
 
     public String getGebruikersnaam() {
@@ -31,12 +31,12 @@ public class Gebruiker {
     }
 
     public static Gebruiker ZoekGebruiker(String Gebruikersnaam){
-          for(Gebruiker a : alleGebruikers){
-             if(Gebruikersnaam.equals(a.Gebruikersnaam)){
-                 return a;
-             }
-          }
-          return null;
+        for(Gebruiker a : alleGebruikers){
+            if(Gebruikersnaam.equals(a.Gebruikersnaam)){
+                return a;
+            }
+        }
+        return null;
     }
 
     public static Boolean checkGebruikersnaam(String gebruiksnaam){
@@ -48,11 +48,8 @@ public class Gebruiker {
         return true;
     }
 
-
-
-
     public void verwijderAccount(){
-          alleGebruikers.remove(this);
+        alleGebruikers.remove(this);
     }
 
     public static void opslaanGebruiker(Gebruiker gebruiker){ alleGebruikers.add(gebruiker); }

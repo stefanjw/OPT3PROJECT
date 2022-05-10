@@ -40,6 +40,14 @@ public class Product {
         return null;
     }
 
+    public static Product maakProduct(String naam, long artikelnummer, double prijs){
+        if(getProduct(artikelnummer)==null) {
+            return new Product(naam, artikelnummer, prijs);
+        }
+        return  null;
+
+    }
+
     private Product VerwijderProduct(long artikelnummer){
         for(Product a : productenLijst)
             if(a.getArtikelnummer() == artikelnummer){
