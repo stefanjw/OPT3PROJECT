@@ -24,10 +24,10 @@ public void getProduct(Product product){
         return winkelmand;
     }
 
-    public void getKorting(){
 
+    public Product getProduct() {
+        return product;
     }
-
 
 
 

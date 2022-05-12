@@ -1,25 +1,39 @@
 package model;
 
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class KortingTest {
 
-    Product a = new Product("Appel", 101, 0.5);
 
 
-    @org.junit.Test
-    public void setKorting() {
+    @Test
+    public void testSetKorting() {
+        Bestelling a = new Bestelling();
+        ;
     }
 
-    @org.junit.Test
+    @Test
     public void berekenKoring() {
     }
 
-    @org.junit.Test
+    @Test
     public void geefKOrting() {
-        var bestelling = new Bestelling();
-        bestelling.
 
+        Bestelling a = new Bestelling();
+        var prod1 = Product.maakProduct("appel", 101, 3.0);
+       var prod2= Product.maakProduct("peer", 10, 3.0);
+        a.getProduct(prod1);
+        Korting b = new Korting(a);
+
+  assertEquals(1.0, b.checkProducten(), 0.0);
+  a.getProduct(prod1);
+  a.getProduct(prod1);
+  assertEquals(0.8, b.checkProducten(), 0.0);
+  a.getProduct(prod1);
+  a.getProduct(prod1);
+  assertEquals(0.6, b.checkProducten(), 0.0);
 
 
 

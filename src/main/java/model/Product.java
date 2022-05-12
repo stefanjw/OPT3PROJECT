@@ -32,7 +32,7 @@ public class Product {
         return productenLijst;
     }
 
-    static Product getProduct(long artikelnummer){
+    static Product addProduct(long artikelnummer){
         for(Product a : productenLijst)
         if(a.getArtikelnummer() == artikelnummer){
             return a;
@@ -41,7 +41,7 @@ public class Product {
     }
 
     public static Product maakProduct(String naam, long artikelnummer, double prijs){
-        if(getProduct(artikelnummer)==null) {
+        if(addProduct(artikelnummer)==null) {
             return new Product(naam, artikelnummer, prijs);
         }
         return  null;
