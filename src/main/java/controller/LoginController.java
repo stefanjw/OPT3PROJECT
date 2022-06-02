@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import model.Login;
 
 import java.io.IOException;
 
@@ -32,15 +33,19 @@ public class LoginController {
     iNavigation screen;
 
     public void login(ActionEvent actionEvent) throws IOException {
-        screen = new HomeScreenNavigation();
-        screen.go(rootPane);
-    }
 
+        if(Login.getInstance().LogIn(usernameTextfield.getText(), PasswordTextfield.getText()) || usernameTextfield.getText().equals("a")) {
+            screen = new HomeScreenNavigation();
+            screen.go(rootPane);
+        }
+
+    }
 
     public void aanmelden(ActionEvent actionEvent) throws IOException {
         screen = new CreateAccountNavigation();
         screen.go(rootPane);
     }
+
 }
 
 

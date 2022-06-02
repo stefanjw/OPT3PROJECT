@@ -1,27 +1,39 @@
 package model;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BestellingTest {
 
-    Gebruiker a = new Gebruiker("","");
+    Gebruiker jaap = new Gebruiker("", "", "", "", "", 19);
+       Product product =Product.maakProduct("appel", 101, 0.69);
+    Bestelling a = new Bestelling(jaap);
 
-    @Test
-    public void getProduct() {
+    @BeforeEach
+    void before(){
+        Product.maakProduct("appel", 101, 0.69);
+        Gebruiker jaap = new Gebruiker("", "", "", "", "", 19);
 
     }
 
+    @Test
+     public void addProduct() {
+      a.addProduct(product);
+
+      assertTrue(a.getWinkelmand().contains(product));
+
+    }
     @Test
     public void removeProduct() {
-    }
-
-    @Test
-    public void getWinkelmand() {
+        a.addProduct(product);
+        assertTrue(a.getWinkelmand().contains(product));
+        a.RemoveProduct(product);
+        assertFalse(a.getWinkelmand().contains(product));
     }
 
     @Test
     public void getKorting() {
+
     }
 }

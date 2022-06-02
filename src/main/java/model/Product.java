@@ -32,7 +32,9 @@ public class Product {
         return productenLijst;
     }
 
-    static Product addProduct(long artikelnummer){
+
+    //product ophalen
+    static Product getProduct(long artikelnummer){
         for(Product a : productenLijst)
         if(a.getArtikelnummer() == artikelnummer){
             return a;
@@ -40,20 +42,27 @@ public class Product {
         return null;
     }
 
+   //product aanmaken
     public static Product maakProduct(String naam, long artikelnummer, double prijs){
-        if(addProduct(artikelnummer)==null) {
+        if(getProduct(artikelnummer)==null) {
             return new Product(naam, artikelnummer, prijs);
         }
         return  null;
 
     }
-
+// product verwijderen
     private Product VerwijderProduct(long artikelnummer){
         for(Product a : productenLijst)
             if(a.getArtikelnummer() == artikelnummer){
                 productenLijst.remove(a);
             }
         return null;
+    }
+
+    public String toString() {
+        return "Naam = " + this.naam + "\r\n" +
+                "Artikelnummer = " + this.getArtikelnummer() + "\r\n" +
+                "Prijs = " + this.prijs;
     }
 
 

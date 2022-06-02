@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LoginTest {
-    Gebruiker a = new Gebruiker("goed", "goed");
-    Gebruiker b = new Gebruiker("jaap " , "jaap");
+    Gebruiker a = new Gebruiker("goed", "goed", "", "", "", 80);
+    Gebruiker b = new Gebruiker("jaap " , "jaap","","","",70);
     Login log = new Login();
 
     @Test

@@ -3,15 +3,14 @@ package controller.navigation;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
-
 import java.io.IOException;
 
-public class LoginScreenNavigation implements iNavigation {
+public class ShopNavigation implements iNavigation {
 
     @Override
     public void go(AnchorPane rootPane) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/LoginScreen.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/ShopScreen.fxml"));
         rootPane.getChildren().setAll(pane);
-
     }
+
 }
