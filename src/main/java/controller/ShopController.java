@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.Bestelling;
+import model.Bon;
 import model.Login;
 import model.Product;
 
@@ -36,10 +37,12 @@ public class ShopController implements Initializable {
         private TableColumn<Product, Long> artikelnummerKolom;
 
         @FXML
-        private TableColumn<Product, String> prijsKolom;
+        private TableColumn<Product, Double> prijsKolom;
 
     @FXML
     private Button BackButton;
+
+
 
     @FXML
     private Button addProduct;
@@ -51,11 +54,26 @@ public class ShopController implements Initializable {
 
     iNavigation screen;
     private Bestelling bestelling;
+    private Bon bon;
+
+
+
+
+    void setVisibleArtikelen() {
+        ArtikelenTableview.setVisible(true);
+        addProduct.setVisible(true);
+
+    }
+
+
+
+
 
 
     @FXML
     void GoToBon(ActionEvent event) throws IOException {
-        bestelling.maakBon();
+
+       bestelling.maakBon();
         screen = new BonScreenNavigation();
         screen.go(rootPane);
 
@@ -67,26 +85,28 @@ public class ShopController implements Initializable {
         screen.go(rootPane);
     }
 
+
+
     @FXML
     void addProductToWinkelmand(ActionEvent event) {
-
-        bestelling = new Bestelling(Login.getInstance().getIngelogdeGebruiker());
+        if (bestelling == null) {
+            bestelling = new Bestelling(Login.getInstance().getIngelogdeGebruiker());
+        }
         Product product = ArtikelenTableview.getSelectionModel().getSelectedItem();
         bestelling.addProduct(product);
 
     }
 
-
         ObservableList<Product> list = FXCollections.observableArrayList(
-                 Product.maakProduct("appel", 101, 0.69),
-                Product.maakProduct("peer", 102, 0.89)
+                Product.maakProduct("appel", 101, 0.69),
+                Product.maakProduct("peer", 102, 2)
         );
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         naamKolom.setCellValueFactory(new PropertyValueFactory<Product, String>("naam"));
-        prijsKolom.setCellValueFactory(new PropertyValueFactory<Product, String>("prijs"));
         artikelnummerKolom.setCellValueFactory(new PropertyValueFactory<Product, Long>("artikelnummer"));
+        prijsKolom.setCellValueFactory(new PropertyValueFactory<Product, Double>("prijs"));
         ArtikelenTableview.setItems(list);
 
     }

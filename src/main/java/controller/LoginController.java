@@ -5,7 +5,6 @@ import controller.navigation.HomeScreenNavigation;
 import controller.navigation.iNavigation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -18,12 +17,6 @@ public class LoginController {
 
     @FXML
     private AnchorPane rootPane;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private Button AanmeldButton;
 
     @FXML
     private TextField usernameTextfield;

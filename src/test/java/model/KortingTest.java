@@ -8,31 +8,27 @@ public class KortingTest {
     Gebruiker nieuw = new Gebruiker("", "", "", "","",9);
 
 
+
     @Test
     public void testSetKorting() {
+        nieuw = Login.getInstance().getIngelogdeGebruiker();
 
-        Bestelling a = new Bestelling(nieuw);
-        ;
     }
 
     @Test
     public void berekenKoringBoven() {
-        kortingBoven65 b = new kortingBoven65();
+        KortingBoven65 b = new KortingBoven65();
         b.BerekenKorting();
         assertEquals(0.8, b.geefKoring(), 0.0);
     }
 
     @Test
     public void berekenKoringOnder() {
-        Korting b = new kortingOnder18();
+        Korting b = new KortingOnder18();
         b.BerekenKorting();
         assertEquals(0.7, b.geefKoring(), 0.0);
+
     }
-
-
-
-
-
 
      @Test
     public void geefKOrting() {

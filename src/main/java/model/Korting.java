@@ -1,9 +1,6 @@
 package model;
 
 public abstract class Korting {
-
-
-
     private double korting;
 
     public abstract void BerekenKorting();
@@ -19,7 +16,7 @@ public abstract class Korting {
 
 }
 
-class kortingBoven65 extends Korting{
+class KortingBoven65 extends Korting{
 
     public void BerekenKorting(){
         setKorting(0.8);
@@ -31,7 +28,7 @@ class kortingBoven65 extends Korting{
     }
 }
 
-class kortingOnder18 extends Korting{
+class KortingOnder18 extends Korting{
 
     @Override
     public void BerekenKorting() {
@@ -67,6 +64,8 @@ private Bestelling bestelling;
         }
 
     }
+
+
     @Override
     public double geefKoring() {
         return getKorting();

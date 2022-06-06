@@ -7,13 +7,7 @@ public class Gebruiker {
     private String Gebruikersnaam;
     private String wachtwoord;
     private int leeftijd;
-
-
-
     private String naam;
-
-
-
     private String achternaam;
     private String email;
     private ArrayList bonnen = new ArrayList();

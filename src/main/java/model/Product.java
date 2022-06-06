@@ -48,7 +48,6 @@ public class Product {
             return new Product(naam, artikelnummer, prijs);
         }
         return  null;
-
     }
 // product verwijderen
     private Product VerwijderProduct(long artikelnummer){
@@ -60,11 +59,6 @@ public class Product {
     }
 
     public String toString() {
-        return "Naam = " + this.naam + "\r\n" +
-                "Artikelnummer = " + this.getArtikelnummer() + "\r\n" +
-                "Prijs = " + this.prijs;
+        return "Naam = " + this.naam + "            Prijs = " + this.prijs+ "\n";
     }
-
-
-
 }
