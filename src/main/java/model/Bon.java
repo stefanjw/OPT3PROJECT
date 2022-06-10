@@ -1,6 +1,7 @@
 package model;
 
 public abstract class Bon {
+final static double btwPercantage = 0.21;
 Gebruiker gebruiker;
 Bestelling bestelling;
 
@@ -22,7 +23,7 @@ public abstract String GetSpecificLastLines();
                "---------------------------------------------\n"+
                "Totale Prijs(Zonder Korting): "+bestelling.getTotalePrijs()+ "\n"+
                "----------------------------------------------\n"+
-                "Prijs met Korting: " + (bestelling.getTotalePrijs()* bestelling.GetKorting())+"\n"+
+                "Prijs met Korting: " + bestelling.getTotalePrijsMetKorting()+ "\n"+
                "---------------------------------------------\n"+
                GetSpecificLastLines();
    }
@@ -37,7 +38,7 @@ public abstract String GetSpecificLastLines();
 
     @Override
     public String GetSpecificLastLines() {
-        return "Btw: " + bestelling.getTotalePrijs() * 0.21;
+        return "Btw: " + bestelling.getTotalePrijs() * btwPercantage;
     }
 }
 

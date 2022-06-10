@@ -28,7 +28,7 @@ public class Product {
         return prijs;
     }
 
-    public ArrayList<Product> getProductenLijst() {
+    public static ArrayList<Product> getProductenLijst() {
         return productenLijst;
     }
 

@@ -7,23 +7,28 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BestellingTest {
 
     Gebruiker jaap = new Gebruiker("", "", "", "", "", 6);
-       Product product =Product.maakProduct("appel", 101, 0.69);
-    Product product2 =Product.maakProduct("peer", 102, 0.10);
+    Product product =Product.maakProduct("appel", 10, 0.69);
+    Product product2 =Product.maakProduct("peer", 11, 0.10);
     Bestelling a = new Bestelling(jaap);
 
-    @BeforeEach
-    void before(){
-        Product.maakProduct("appel", 101, 0.69);
-        Gebruiker jaap = new Gebruiker("", "", "", "", "", 19);
 
-    }
 
     @Test
     public void BerekenTotalePrijs(){
         a.addProduct(product);
+        a.addProduct(product2);
+        a.berekenTotalePrijs();
+
+        assertEquals(0.79, a.getTotalePrijs(), 0.01);
+
+    }
+    @Test
+    public void BerekenTotalePrijsMetKorting(){
         a.addProduct(product);
         a.addProduct(product2);
-        assertEquals(1.48, a.getTotalePrijs());
+        a.berekenTotalePrijs();
+        a.berekenTotalePrijsMetKorting();
+        assertEquals(0.55, a.getTotalePrijsMetKorting(), 0.01);
     }
 
     @Test
@@ -44,14 +49,9 @@ public class BestellingTest {
     @Test
     public void getKorting() {
         a.addProduct(product);
+        assertEquals(0.7, a.getKorting());
+    }
 
-        assertEquals(0.7, a.GetKorting());
-    }
-    @Test
-    public void berekenPrijsMetKorting() {
-        a.addProduct(product);
-        a.berekenTotalePrijs();
-        assertEquals(0.48, a.berekenPrijsMetKorting(), 0.1);
-    }
+
 
 }

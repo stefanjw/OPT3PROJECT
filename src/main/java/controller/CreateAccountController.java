@@ -57,16 +57,22 @@ public class CreateAccountController {
     }
     public void GoestoLoginMenu(javafx.event.ActionEvent actionEvent) throws IOException {
 
-        if(!checkIfEmpty() && Gebruiker.checkGebruikersnaam(GebruikersnaamText.getText()) ) {
+        if(!checkIfEmpty() && Gebruiker.checkGebruikersnaam(GebruikersnaamText.getText()) && !leeftijdText.getText().matches("[a-z]+")  ) {
 
             new Gebruiker(GebruikersnaamText.getText(), WachtwoordText.getText(), voornaamText.getText(), achternaamText.getText(), EmailText.getText(), Integer.parseInt(leeftijdText.getText()));
             screen = new LoginScreenNavigation();
             screen.go(rootPane);
         }
-        else{
-            ErrorMessage.setText("U heeft niet alle velden ingevuld!");
+        else if(leeftijdText.getText().matches("[a-z]+")){
+            ErrorMessage.setText("Voer een getal in als leeftijd");
         }
-    }
+        else if(checkIfEmpty()) {
+            ErrorMessage.setText("U heeft niet alle velden ingevuld!");
+            }
+
+        }
+
+
 
 
 

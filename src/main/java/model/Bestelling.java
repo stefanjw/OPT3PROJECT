@@ -6,6 +6,7 @@ public class Bestelling {
     private Gebruiker besteller;
     private ArrayList<Product> winkelmand;
     private double totalePrijs = 0;
+    private double prijsMetKorting=0;
     Korting korting;
     Bon bon;
 
@@ -22,8 +23,20 @@ public class Bestelling {
             totalePrijs +=  product.getPrijs();
         }
     }
+    public void berekenTotalePrijsMetKorting() {
+        besteller.getLeeftijd();
+        prijsMetKorting = getTotalePrijs()*getKorting();
+        prijsMetKorting = Math.round(prijsMetKorting*100);
+        prijsMetKorting = prijsMetKorting /100;
 
-    public Double getTotalePrijs(){
+    }
+    public double getTotalePrijsMetKorting(){
+        return prijsMetKorting;
+    }
+
+
+
+    public double getTotalePrijs(){
         return totalePrijs;
     }
 
@@ -42,7 +55,7 @@ public class Bestelling {
     }
 
 
-    public Double GetKorting() {
+    public double getKorting() {
 
         if (besteller.getLeeftijd() < 18) {
             korting = new KortingOnder18();
@@ -70,6 +83,7 @@ public class Bestelling {
 
       public void maakBon(){
         berekenTotalePrijs();
+        berekenTotalePrijsMetKorting();
         if(besteller.getLeeftijd()<18){
              bon= new BonWithoutBtw(this);
         }
@@ -85,7 +99,7 @@ public class Bestelling {
     }
 
     public double berekenPrijsMetKorting(){
-        return getTotalePrijs() * GetKorting();
+        return getTotalePrijs() * getKorting();
     }
 }
 
