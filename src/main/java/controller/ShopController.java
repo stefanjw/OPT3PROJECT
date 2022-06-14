@@ -3,8 +3,6 @@ package controller;
 import controller.navigation.BonScreenNavigation;
 import controller.navigation.HomeScreenNavigation;
 import controller.navigation.iNavigation;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import model.Bestelling;
 import model.Bon;
 import model.Login;
@@ -40,23 +39,26 @@ public class ShopController implements Initializable {
         private TableColumn<Product, Double> prijsKolom;
 
     @FXML
+    private Text productCountText;
+
+    @FXML
+    private Button RemoveButton;
+
+    @FXML
     private Button BackButton;
-
-
 
     @FXML
     private Button addProduct;
 
     @FXML
+    private TableColumn<Integer, Integer> aantalKolom;
+
+    @FXML
     private Button GoToBonButton;
-
-
 
     iNavigation screen;
     private Bestelling bestelling;
     private Bon bon;
-
-
 
 
     void setVisibleArtikelen() {
@@ -64,19 +66,16 @@ public class ShopController implements Initializable {
         addProduct.setVisible(true);
 
     }
+    @FXML
+    void CartAndBack(ActionEvent event) {
 
-
-
-
-
-
+    }
     @FXML
     void GoToBon(ActionEvent event) throws IOException {
 
        bestelling.maakBon();
         screen = new BonScreenNavigation();
         screen.go(rootPane);
-
     }
 
     @FXML
@@ -85,7 +84,16 @@ public class ShopController implements Initializable {
         screen.go(rootPane);
     }
 
+    @FXML
+    void removeProduct(ActionEvent event) {
+        if (bestelling == null) {
+            bestelling = new Bestelling(Login.getInstance().getIngelogdeGebruiker());
+        }
+        Product product = ArtikelenTableview.getSelectionModel().getSelectedItem();
+        bestelling.removeProduct(product);
 
+        productCountText.setText("winkelwagen: "+"\n"+ bestelling.countProducts());
+    }
 
     @FXML
     void addProductToWinkelmand(ActionEvent event) {
@@ -95,19 +103,20 @@ public class ShopController implements Initializable {
         Product product = ArtikelenTableview.getSelectionModel().getSelectedItem();
         bestelling.addProduct(product);
 
+        productCountText.setText("winkelwagen: "+ "\n" + bestelling.countProducts());
     }
 
-        ObservableList<Product> list = FXCollections.observableArrayList(
-                Product.maakProduct("appel", 101, 0.69),
-                Product.maakProduct("peer", 102, 2)
-        );
+
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         naamKolom.setCellValueFactory(new PropertyValueFactory<Product, String>("naam"));
         artikelnummerKolom.setCellValueFactory(new PropertyValueFactory<Product, Long>("artikelnummer"));
         prijsKolom.setCellValueFactory(new PropertyValueFactory<Product, Double>("prijs"));
-        ArtikelenTableview.setItems(list);
+        aantalKolom.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("ja"));
+        ArtikelenTableview.setItems(Product.getList());
+
 
     }
     }
